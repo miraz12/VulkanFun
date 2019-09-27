@@ -11,6 +11,12 @@
 const int WIDTH = 800;
 const int HEIGHT = 600;
 
+//Extensions
+const std::vector<const char*> deviceExtensions = {
+	VK_KHR_SWAPCHAIN_EXTENSION_NAME
+};
+
+//Validation layers
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
 };
@@ -299,7 +305,15 @@ private:
 	{
 		QueueFamilyIndices indices = findQueueFamilies(device);
 
+		bool extensionSupported = checkDeviceExtensionSupport(device);
+
 		return indices.isComplete();
+	}
+
+	bool checkDeviceExtensionSupport(VkPhysicalDevice device)
+	{
+		QueueFamilyIndices indices = findQueueFamilies(device);
+
 	}
 
 	QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device)
